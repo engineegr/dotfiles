@@ -1,0 +1,25 @@
+$include /etc/inputrc
+
+"\C-p":history-search-backward
+"\C-n":history-search-forward
+"\C-k": forward-word
+"\C-j": backward-word
+"\C-h": backward-char
+"\C-l": forward-char
+"\C-g": backward-kill-word
+
+# for linux console and RH/Debian xterm
+# C-a
+"\e[1~": beginning-of-line
+# C-e
+"\e[4~": end-of-line
+# ctrl-d
+"\e[3~": delete-char
+
+set colored-stats On
+set completion-ignore-case On
+set completion-prefix-display-length 3
+set mark-symlinked-directories On
+set show-all-if-ambiguous On
+set show-all-if-unmodified On
+set visible-stats On

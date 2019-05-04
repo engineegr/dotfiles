@@ -1,0 +1,6 @@
+.*.log
+.*.swp
+.ssh
+.*.txt
+**/tmp
+**/.tmp

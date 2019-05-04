@@ -1,0 +1,16 @@
+#!/bin/sh
+
+[ ! -d $HOME/.vim/tmp ] && mkdir -p $HOME/.vim/tmp
+
+# install fzf
+if [ ! -e $HOME/.fzf ]; then
+  git clone --depth 1 https://github.com/junegunn/fzf.git $HOME/.fzf
+  cd $HOME/.fzf
+  ./install --all
+fi 
+
+if [ ! -e $HOME/.vim/bundle ]; then
+  mkdir $HOME/.vim/bundle; git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim
+fi
+
+vim -u $HOME/.vimrc +PluginUpdate +PlugClean! +qall -

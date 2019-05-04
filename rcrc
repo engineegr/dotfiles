@@ -1,0 +1,4 @@
+SYMLINK_DIRS="tmux vim"
+COPY_ALWAYS="*"
+TAGS="tmux vim"
+EXCLUDES="README.md *.log .git tmp"
