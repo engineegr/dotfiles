@@ -1,4 +1,5 @@
-colorscheme molokai_dark
+"colorscheme molokai_dark
+colorscheme evening
 set clipboard=unnamedplue
 
 " turn on vim-pathogen plugin
@@ -28,6 +29,7 @@ set number
 set smartcase 
 set incsearch 
 set whichwrap=b,s,<,>,[,]
+" set autoindent 
 
 " <CR> return carriage
 " <C-x> ctrl - x
@@ -149,6 +151,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 " Turn on fzf
 " If installed using git
 set rtp+=~/.fzf
+set rtp+=~/.vim/plugin/setcolors.vim
 " vim-pluggin 
 call vundle#begin('~/.vim/bundle')
 " Initialize plugin system
@@ -158,6 +161,7 @@ call vundle#begin('~/.vim/bundle')
   Plugin 'junegunn/fzf.vim'
   Plugin 'haya14busa/incsearch.vim'
   Plugin 'zhou13/vim-easyescape'
+  Plugin 'Chiel92/vim-autoformat'
 call vundle#end()
 
 " Plug 'haya14busa/incsearch.vim'
@@ -173,6 +177,15 @@ let g:easyescape_timeout = 2000
 cnoremap jk <ESC>
 cnoremap kj <ESC>
 
+noremap <Esc>, :Autoformat<CR>
+let g:autoformat_autoindent = 0
+let g:autoformat_retab = 0
+let g:autoformat_remove_trailing_spaces = 0
+" Use of the tuned .sh format util (Google Style: https://google.github.io/styleguide/shell.xml)
+let g:formatdef_my_custom_sh = '"shfmt -i 2 -ci"'
+let g:formatters_sh = ['my_custom_sh']
+au BufReadPost,BufNewFile,BufWrite *.sh :Autoformat
+
 highlight Visual ctermbg=238
 highlight Comment ctermfg=Gray
-
+highlight MatchParen cterm=none ctermbg=green ctermfg=blue

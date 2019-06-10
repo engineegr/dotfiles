@@ -129,4 +129,11 @@ if [ -f ~/.bash_aliases_rc ]; then
     . ~/.bash_aliases_rc
 fi
 
+if [ -d "/usr/local/share/go/go1.12.2.lnx-amd64" ]; then
+  export GOROOT="/usr/local/share/go/go1.12.2.lnx-amd64"
+  export PATH="$GOROOT/bin:$PATH"
+fi
 
+if [ -d "$HOME/go/bin" ]; then
+  export PATH="$HOME/go/bin:$PATH"
+fi
