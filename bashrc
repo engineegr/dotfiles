@@ -112,7 +112,7 @@ fi
 
 TMUX_CFG_PATH=~/.tmux
 
-if [[ -x /usr/bin/tmux ]]; then
+if [[ -x /usr/bin/tmux || -x /usr/local/bin/tmux ]]; then
     $TMUX_CFG_PATH/start_tmux.sh 1>$TMUX_CFG_PATH/stdout.tmux.log 2>$TMUX_CFG_PATH/stderr.tmux.log
 else
     echo "Warrning: No tmux has been installed" > $TMUX_CFG_PATH/stderr.tmux.log
@@ -137,3 +137,14 @@ fi
 if [ -d "$HOME/go/bin" ]; then
   export PATH="$HOME/go/bin:$PATH"
 fi
+
+export PATH=/root/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/local/go/bin:/usr/local/go/bin:/root/.fzf/bin
+
+# Powerline instantiation
+#if [ -f /usr/bin/powerline-daemon ]; then
+#  powerline-daemon -q
+#  POWERLINE_BASH_CONTINUATION=1
+#  POWERLINE_BASH_SELECT=1
+#  . /usr/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
+#fi
+
