@@ -17,6 +17,7 @@ set backupdir=~/.vim/tmp
 set shiftwidth=2
 set tabstop=2
 set softtabstop=2
+set smartindent 
 set expandtab
 set backspace=indent,eol,start
 set mouse-=a
@@ -64,8 +65,15 @@ vnoremap + o
 nnoremap + o
 "vnoremap = o
 "nnoremap = o
-" Replace line 
-noremap rl <S-V>p  
+" Replace line
+noremap rl <S-V>p
+" Replace word (register: 0)
+noremap rw cw<C-r>0<Esc>  
+" Enter in normal mode by <Esc>o
+inoremap <Esc>o <C-o>
+" Jump to prev/next paragraph
+inoremap <Esc>[ <C-o>{
+inoremap <Esc>] <C-o>}
 
 " write change and exit
 nnoremap <S-u> :so ~/.vimrc<CR>
@@ -162,6 +170,7 @@ call vundle#begin('~/.vim/bundle')
   Plugin 'haya14busa/incsearch.vim'
   Plugin 'zhou13/vim-easyescape'
   Plugin 'Chiel92/vim-autoformat'
+  Plugin 'sheerun/vim-polyglot'
 call vundle#end()
 
 " Plug 'haya14busa/incsearch.vim'
@@ -184,8 +193,13 @@ let g:autoformat_remove_trailing_spaces = 0
 " Use of the tuned .sh format util (Google Style: https://google.github.io/styleguide/shell.xml)
 let g:formatdef_my_custom_sh = '"shfmt -i 2 -ci"'
 let g:formatters_sh = ['my_custom_sh']
+
+" au BufReadPost,BufNewFile,BufWrite *.sh execute "normal gg=G"
 au BufReadPost,BufNewFile,BufWrite *.sh :Autoformat
 
 highlight Visual ctermbg=238
 highlight Comment ctermfg=Gray
-highlight MatchParen cterm=none ctermbg=green ctermfg=blue
+highlight MatchParen cterm=none ctermbg=green ctermfg=yellow
+
+filetype plugin indent on " Filetype auto-detection
+syntax on " Syntax highlighting
