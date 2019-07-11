@@ -140,11 +140,4 @@ fi
 
 export PATH=/root/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/local/go/bin:/usr/local/go/bin:/root/.fzf/bin
 
-# Powerline instantiation
-#if [ -f /usr/bin/powerline-daemon ]; then
-#  powerline-daemon -q
-#  POWERLINE_BASH_CONTINUATION=1
-#  POWERLINE_BASH_SELECT=1
-#  . /usr/lib/python2.7/site-packages/powerline/bindings/bash/powerline.sh
-#fi
-
+[[ -s "/etc/profile.d/grc.bashrc" ]] && source /etc/profile.d/grc.bashrc
