@@ -1,6 +1,7 @@
 #!/bin/sh
 
 [ ! -d $HOME/.vim/tmp ] && mkdir -p $HOME/.vim/tmp
+[ ! -d $HOME/.tmux ] && mkdir -p $HOME/.tmux
 
 # install fzf
 if [ ! -e $HOME/.fzf ]; then
