@@ -2,7 +2,7 @@
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
-	. /etc/bashrc
+  . /etc/bashrc
 fi
 
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
@@ -14,8 +14,8 @@ fi
 
 # If not running interactively, don't do anything
 case $- in
-    *i*) ;;
-      *) return;;
+  *i*) ;;
+  *) return;;
 esac
 
 # don't put duplicate lines or lines starting with space in the history.
@@ -42,7 +42,7 @@ shopt -s checkwinsize
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
-    xterm-color|*-256color) color_prompt=yes;;
+  xterm-color|*-256color) color_prompt=yes;;
 esac
 
 # uncomment for a colored prompt, if the terminal has the capability; turned
@@ -51,14 +51,14 @@ esac
 #force_color_prompt=yes
 
 if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-	# We have color support; assume it's compliant with Ecma-48
-	# (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-	# a case would tend to support setf rather than setaf.)
-	color_prompt=yes
-    else
-	color_prompt=
-    fi
+  if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
+    # We have color support; assume it's compliant with Ecma-48
+    # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+    # a case would tend to support setf rather than setaf.)
+    color_prompt=yes
+  else
+    color_prompt=
+  fi
 fi
 
 # make less to open files in color
@@ -81,10 +81,10 @@ path_colour=104m
 PS1_DPP_PATH='\[\e[38;5;${path_colour}\]\W\[\e[00m\]'
 
 if [ "$color_prompt" = yes ]; then
-#    PS1="$PS1_YE_TIME $PS1_BGR_USER $PS1_CYAN_PATH " 
-    PS1="$PS1_DYE_TIME $PS1_DOR_USER $PS1_DPP_PATH " 
+  #    PS1="$PS1_YE_TIME $PS1_BGR_USER $PS1_CYAN_PATH " 
+  PS1="$PS1_DYE_TIME $PS1_DOR_USER $PS1_DPP_PATH " 
 else
-    PS1='\t \u@\h:\W\$ '
+  PS1='\t \u@\h:\W\$ '
 fi
 
 # PS1='\t \u@\h:\W\$ '
@@ -96,8 +96,8 @@ unset color_prompt force_color_prompt
 #    PS1="$PS1_YE_TIME $PS1_BGR_USER $PS1_CYAN_PATH " 
 #    ;;
 #*)
-#    ;;
-#esac
+  #    ;;
+  #esac
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -113,9 +113,9 @@ fi
 TMUX_CFG_PATH=~/.tmux
 
 if [[ -x /usr/bin/tmux || -x /usr/local/bin/tmux ]]; then
-    $TMUX_CFG_PATH/start_tmux.sh 1>$TMUX_CFG_PATH/stdout.tmux.log 2>$TMUX_CFG_PATH/stderr.tmux.log
+  $TMUX_CFG_PATH/start_tmux.sh 1>$TMUX_CFG_PATH/stdout.tmux.log 2>$TMUX_CFG_PATH/stderr.tmux.log
 else
-    echo "Warrning: No tmux has been installed" > $TMUX_CFG_PATH/stderr.tmux.log
+  echo "Warrning: No tmux has been installed" > $TMUX_CFG_PATH/stderr.tmux.log
 fi 
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
@@ -126,7 +126,7 @@ fi
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
 if [ -f ~/.bash_aliases_rc ]; then
-    . ~/.bash_aliases_rc
+  . ~/.bash_aliases_rc
 fi
 
 if [ -d "/usr/local/share/go/go1.12.2.lnx-amd64" ]; then
@@ -138,6 +138,11 @@ if [ -d "$HOME/go/bin" ]; then
   export PATH="$HOME/go/bin:$PATH"
 fi
 
-export PATH=/root/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/local/go/bin:/usr/local/go/bin:/root/.fzf/bin
+export PATH=/root/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/local/go/bin:/usr/local/go/bin:/root/.fzf/bin:$PATH
 
 [[ -s "/etc/profile.d/grc.bashrc" ]] && source /etc/profile.d/grc.bashrc
+
+if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
+  GIT_PROMPT_ONLY_IN_REPO=1
+  source $HOME/.bash-git-prompt/gitprompt.sh
+fi
