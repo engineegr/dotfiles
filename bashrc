@@ -138,8 +138,6 @@ if [ -d "$HOME/go/bin" ]; then
   export PATH="$HOME/go/bin:$PATH"
 fi
 
-export PATH=/root/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/local/go/bin:/usr/local/go/bin:/root/.fzf/bin:$PATH
-
 [[ -s "/etc/profile.d/grc.bashrc" ]] && source /etc/profile.d/grc.bashrc
 
 if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
