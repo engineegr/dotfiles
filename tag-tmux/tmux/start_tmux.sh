@@ -15,8 +15,10 @@ function main() {
         tmux new-window -d -t "$session_name":3 -n dmesg  
         tmux new-window -d -t "$session_name":4 -n part_usage  
         tmux new-window -d -t "$session_name":5 -n top 
+        tmux new-window -d -t "$session_name":6 -n messages
 
-        tmux send -t "$session_name":5 'top' C-m
+        tmux send-key -t "$session_name":6 'tail -f /var/log/messages' C-m
+        tmux send-key -t "$session_name":5 'top' C-m
         tmux send-keys -t "$session_name":4 'du -d 1 -h -BM --exclude "proc" /' C-m
         tmux send-keys -t "$session_name":3 'sudo dmesg --human --color=always -e | more' Enter
         tmux send-keys -t "$session_name":2 'vim ~/.tmux.conf' Enter

@@ -196,7 +196,7 @@ let g:formatdef_my_custom_sh = '"shfmt -i 2 -ci"'
 let g:formatters_sh = ['my_custom_sh']
 
 " au BufReadPost,BufNewFile,BufWrite *.sh execute "normal gg=G"
-" au BufReadPost,BufNewFile,BufWrite *.sh :Autoformat
+au BufReadPost,BufNewFile,BufWrite *.sh :Autoformat
 
 highlight Visual ctermbg=238
 highlight Comment ctermfg=Gray
