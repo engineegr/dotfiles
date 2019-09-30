@@ -1,6 +1,6 @@
 "colorscheme molokai_dark
 colorscheme evening
-set clipboard=unnamedplue
+set clipboard=unnamedplus
 
 " turn on vim-pathogen plugin
 " lets you keep plugins in subdirectories of .vim/bundle/
@@ -32,6 +32,11 @@ set incsearch
 set whichwrap=b,s,<,>,[,]
 "set autoindent 
 set autoread 
+
+" Enable folding
+" @see https://realpython.com/vim-and-python-a-match-made-in-heaven/
+set foldmethod=indent
+set foldlevel=99
 
 " <CR> return carriage
 " <C-x> ctrl - x
