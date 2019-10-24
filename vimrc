@@ -1,5 +1,3 @@
-"colorscheme molokai_dark
-colorscheme evening
 set clipboard=unnamedplus
 
 " turn on vim-pathogen plugin
@@ -33,6 +31,8 @@ set whichwrap=b,s,<,>,[,]
 "set autoindent
 set autoread
 set encoding=utf-8
+set fileencoding=utf-8
+set termencoding=utf-8
 " Enable folding
 " @see https://realpython.com/vim-and-python-a-match-made-in-heaven/
 set foldmethod=indent
@@ -131,21 +131,23 @@ inoremap <F2> <C-R>=expand('%')<CR>
 "   %P percentage through buffer
 "   %) end of width specification
 "   %L Common number of rows
-" set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
+ set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P
 " Good example of status line https://nkantar.com/blog/my-vim-statusline
 " display statusline always
+ set statusline=
 set laststatus=2
-set statusline=
+set t_Co=256
 set statusline=%<%F
 set statusline+=%30.(%y\[m:%{mode()}\]\[bf:%{winnr()}\]%m%r%)
+" 
 " Recommended settings for syntastic plugin
-set statusline+=%#warningmsg#
+set statusline+=#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" 
 " strftime - display time string, see
 " https://vimhelp.org/eval.txt.html#strftime%28%29
 set statusline+=%=%-14.(%{strftime('%Y\ %b\ %d\ %X')}\ %l,%c%V%)\ \[%P/%L\]
-
+" 
 " Works in vim > 7 ver ONLY.
 let s:timer_rt=timer_start(1000, {-> execute(':let &stl=&stl')}, {'repeat': -1})
 " Backup / Swap / Undo config
@@ -172,6 +174,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 " If installed using git
 set rtp+=~/.fzf
 set rtp+=~/.vim/plugin/setcolors.vim
+set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
 " vim-pluggin
 call vundle#begin('~/.vim/bundle')
 " Initialize plugin system
@@ -186,7 +189,11 @@ call vundle#begin('~/.vim/bundle')
   Plugin 'vim-scripts/indentpython.vim'
   Plugin 'Valloric/YouCompleteMe'
   Plugin 'vim-syntastic/syntastic'
-  Plugin 'nvie/vim-flake8'
+  Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+  Plugin 'ryanoasis/vim-devicons'
+  Plugin 'vim-airline/vim-airline'
+  Plugin 'vim-airline/vim-airline-themes'
+  Plugin 'enricobacis/vim-airline-clock'
   Plugin 'jnurmine/Zenburn'
   Plugin 'altercation/vim-colors-solarized'
   Plugin 'scrooloose/nerdtree'
@@ -242,13 +249,17 @@ function! TrimBlankLinesAndWhitespace()
   keeppatterns %s#\($\n\s*\)\+\%$##
   call winrestview(l:save)
 endfunction
+
+" Powerline 
+" Setup airline
+let g:airline#extensions#tabline#enabled = 1
+" Display time (use vim-airline-clock plugin)
+" let g:airline#extensions#clock#format = '%H:%M:%S'
+let g:airline#extensions#clock#format = '%Y %b %d %X'
 " transform the func to command (to call it as :TrimWhitespace
 command! TrimBlankLinesAndWhitespace call TrimBlankLinesAndWhitespace()
 au BufNewFile,BufWrite *.py,*.pyw,*.c,*.h :call TrimBlankLinesAndWhitespace()<CR>
 nnoremap <Esc>w :call TrimBlankLinesAndWhitespace()<CR>
-" au BufRead, BufNewFile, BufWritePre *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
-" autocmd FileType c,py,cpp,java,php autocmd BufWritePre <buffer> %s/\s\+$//e
-
 au BufNewFile, BufRead *.py
     \ set tabstop=4
     \ set softtabstop=4
@@ -258,8 +269,8 @@ au BufNewFile, BufRead *.py
     \ set autoindent
     \ set fileformat=unix
 
-autocmd FileType python map <buffer> <Esc>l :call flake8#Flake8()<CR>
-autocmd BufWritePost *.py call flake8#Flake8()
+" autocmd FileType python map <buffer> <Esc>l :call flake8#Flake8()<CR>
+" autocmd BufWritePost *.py call flake8#Flake8()
 let python_highlight_all=1
 
 au BufNewFile,BufRead *.js, *.html, *.css
