@@ -189,6 +189,7 @@ call vundle#begin('~/.vim/bundle')
   Plugin 'vim-scripts/indentpython.vim'
   Plugin 'Valloric/YouCompleteMe'
   Plugin 'vim-syntastic/syntastic'
+  " Plugin 'vim-vdebug/vdebug'
   Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
   Plugin 'ryanoasis/vim-devicons'
   Plugin 'vim-airline/vim-airline'
@@ -213,7 +214,7 @@ cnoremap jk <ESC>
 cnoremap kj <ESC>
 
 noremap <Esc>, :Autoformat<CR>
-let g:autoformat_autoindent = 0
+let g:autoformat_autoindent = 1
 let g:autoformat_retab = 0
 let g:autoformat_remove_trailing_spaces = 0
 " Use of the tuned .sh format util (Google Style: https://google.github.io/styleguide/shell.xml)
@@ -249,6 +250,11 @@ function! TrimBlankLinesAndWhitespace()
   keeppatterns %s#\($\n\s*\)\+\%$##
   call winrestview(l:save)
 endfunction
+
+" hide YouAutocomplete 
+" https://github.com/ycm-core/YouCompleteMe/issues/662
+command! HideYC call youcompleteme#DisableCursorMovedAutocommands()
+nnoremap <Esc>q :call HideYC()<CR>
 
 " Powerline 
 " Setup airline
