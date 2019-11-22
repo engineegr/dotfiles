@@ -138,11 +138,15 @@ if [ -d "$HOME/go/bin" ]; then
   export PATH="$HOME/go/bin:$PATH"
 fi
 
-export PATH=/root/go/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/usr/local/go/bin:/usr/local/go/bin:/root/.fzf/bin:$PATH
-
 [[ -s "/etc/profile.d/grc.bashrc" ]] && source /etc/profile.d/grc.bashrc
 
 if [ -f "$HOME/.bash-git-prompt/gitprompt.sh" ]; then
   GIT_PROMPT_ONLY_IN_REPO=1
+  GIT_PROMPT_THEME=Solarized
+  GIT_PROMPT_VIRTUALENV="(${Green}_VIRTUALENV_${ResetColor}) "
   source $HOME/.bash-git-prompt/gitprompt.sh
 fi
+
+export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3.7
+export WORKON_HOME=~/venv
+. /usr/local/bin/virtualenvwrapper.sh
