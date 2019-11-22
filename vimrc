@@ -172,6 +172,7 @@ call vundle#begin('~/.vim/bundle')
   Plugin 'zhou13/vim-easyescape'
   Plugin 'Chiel92/vim-autoformat'
   Plugin 'sheerun/vim-polyglot'
+  Plugin 'stephpy/vim-yaml'
 call vundle#end()
 
 " Plug 'haya14busa/incsearch.vim'
@@ -196,7 +197,9 @@ let g:formatdef_my_custom_sh = '"shfmt -i 2 -ci"'
 let g:formatters_sh = ['my_custom_sh']
 
 " au BufReadPost,BufNewFile,BufWrite *.sh execute "normal gg=G"
-" au BufReadPost,BufNewFile,BufWrite *.sh :Autoformat
+au BufReadPost,BufNewFile,BufWrite *.sh :Autoformat
+au BufNewFile,BufRead *.yaml,*.yml so ~/.vim/bundle/vim-yaml/after/syntax/yaml.vim
+au BufNewFile,BufRead *.yaml,*.yml so ~/.vim/bundle/vim-yaml/after/ftplugin/yaml.vim
 
 highlight Visual ctermbg=238
 highlight Comment ctermfg=Gray
