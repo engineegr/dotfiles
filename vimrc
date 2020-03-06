@@ -188,7 +188,8 @@ call vundle#begin('~/.vim/bundle')
   Plugin 'sheerun/vim-polyglot'
   Plugin 'stephpy/vim-yaml'
   Plugin 'vim-scripts/indentpython.vim'
-  Plugin 'Valloric/YouCompleteMe'
+  " Plugin 'Valloric/YouCompleteMe'
+  Plugin 'ajh17/VimCompletesMe'
   Plugin 'vim-syntastic/syntastic'
   " Plugin 'vim-vdebug/vdebug'
   " Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
@@ -225,8 +226,8 @@ let g:formatter_yapf_style = 'pep8'
 
 " YouCompleteMe
 " @link https://github.com/ycm-core/YouCompleteMe
-let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+" let g:ycm_autoclose_preview_window_after_completion=1
+" map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " Synastic
 " @link https://github.com/vim-syntastic/syntastic

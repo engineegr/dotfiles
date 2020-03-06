@@ -12,3 +12,7 @@ export PATH=$PATH:$HOME/.local/bin:$HOME/bin
 # Interesting detail: the string interrupts execution of the rest part (the part placed below) and it continues execution after we kill the session
 # systemctl --user import-environment PATH
 
+# Run on login
+if [ -f "/home/vagrant/rui/tests/base/test_runOnFirstLogin.sh" ]; then
+  "/home/vagrant/rui/tests/base/test_runOnFirstLogin.sh"
+fi
