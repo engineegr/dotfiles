@@ -1,4 +1,4 @@
-SYMLINK_DIRS="tmux vim"
+SYMLINK_DIRS="tmux vim zsh bash"
 COPY_ALWAYS="*"
-TAGS="tmux vim"
+TAGS="tmux vim bash zsh"
 EXCLUDES="README.md *.log .git tmp"

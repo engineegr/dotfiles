@@ -1,0 +1,133 @@
+#
+# ~/.zsh_aliases_rc:#
+# 
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+  alias ls='ls --color=always -lat --block-size=M'
+  alias dir='dir --color=always'
+  alias vdir='vdir --color=always'
+
+  alias grep='grep --color=always'
+  alias fgrep='fgrep --color=always'
+  alias egrep='egrep --color=always'
+fi
+
+# colored GCC warnings and errors
+#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+# some more ls aliases
+alias ll='ls -l'
+alias lf='ls -lat'
+alias la='ls -A'
+alias l='ls -CF'
+alias lc='ls --color'
+alias vimsudo="sudo SUDO_EDITOR=/usr/bin/vim visudo"
+alias ztar="tar cfvz"
+alias e="exit"
+alias cl="clear"
+alias mk="mkdir -p"
+alias ..="cd .."
+alias ut="sudo ntpd -gq"
+alias e="exit"
+# file tree
+alias tree="find . -print | sed -e 's;[^/]*/;|____;g;s;____|; |;g'"
+# Show file perms, its octel values and sizes in MB
+
+if [[ -x /usr/local/bin/vim && -x /usr/sbin/visudo ]]; then
+  export SUDO_EDITOR=/usr/local/bin/vim
+  export EDITOR=/usr/local/bin/vim
+  export VISUAL=$EDITOR
+  alias visudo='EDITOR=vim visudo'
+fi
+
+if [[ -x /usr/bin/tmux ]]; then
+  alias stmux="$TMUX_CFG_PATH/start_tmux.sh 1>$TMUX_CFG_PATH/stdout.tmux.log 2>$TMUX_CFG_PATH/stderr.tmux.log"
+fi
+#:
+#: Show file perms, its octel values and sizes in MB
+#: arg0 - subdivision (by default lists in MB)
+#: arg1 - file path
+#:
+lsst() {
+  if [[ -z "$2" ]]; then
+    echo "$FUNCNAME Error: NULL args"
+  else
+    local -r __subd="${1:-1048576}"
+    stat -c '%A %a %n %s' "$2" | awk -v subd="$__subd" '{ print $0 " " $4/subd " [MB]" }'
+  fi
+}
+
+#:
+#: Find in current directory excluding file_name
+#: arg0 - excluding regexp
+#:
+vfpr() {
+  if [[ -z "$1" || -z "$2" ]]; then
+    echo "$FUNCNAME Error: NULL args"
+  else
+    local -r rexp="$1"
+    find . -mindepth 1 -maxdepth 1 -not -regex "$rexp"
+  fi
+}
+
+cvim() {
+  if [ -x /usr/local/bin/vim ]; then
+    vim ~/.vimrc
+  fi
+}
+
+ctmux() {
+  if [ -x /usr/bin/tmux ]; then
+    vim ~/.tmux.conf
+  fi
+}
+
+rbck() {
+  if [[ -z "$1" || -z "$2" || -z "$3" ]]; then
+    echo "$FUNCNAME Error: NULL args"
+  else
+    local -r rexp="$1"
+    local -r rem_path="$2"
+    local -r dst="$3"
+
+    find . -mindepth 1 -maxdepth 1 -not -regex "$rexp" -print0 | xargs -0 tar cvpfz - | ssh "$2" "cat > $3"
+  fi
+}
+
+# colored man pages
+# http://askubuntu.com/a/439411/260920
+man() {
+  case "$(type -t -- "$1")" in
+    builtin | keyword)
+      help -m "$1" | $(which less)
+      ;;
+    *)
+      env LESS_TERMCAP_mb=$'\E[01;31m' \
+        LESS_TERMCAP_md=$'\E[01;38;5;74m' \
+        LESS_TERMCAP_me=$'\E[0m' \
+        LESS_TERMCAP_se=$'\E[0m' \
+        LESS_TERMCAP_so=$'\E[01;38;5;172m' \
+        LESS_TERMCAP_ue=$'\E[0m' \
+        LESS_TERMCAP_us=$'\E[04;38;5;146m' \
+      man "$@"
+      ;;
+  esac
+}
+
+# e.g., up -> go up 1 directory
+# up 4 -> go up 4 directories
+up() {
+  dir=""
+  if [[ $1 =~ ^[0-9]+$ ]]; then
+    x=0
+    while [ $x -lt ${1:-1} ]; do
+      dir=${dir}../
+      x=$(($x + 1))
+    done
+  else
+    dir=..
+  fi
+  cd "$dir"
+}
+

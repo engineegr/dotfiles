@@ -1,0 +1,6 @@
+# History settings
+setopt HIST_IGNORE_SPACE
+setopt HIST_IGNORE_ALL_DUPS
+HISTFILE=~/.histfile
+HISTSIZE=100000
+SAVEHIST=100000
