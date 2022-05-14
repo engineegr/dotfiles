@@ -71,8 +71,6 @@ nnoremap - dd
 vnoremap - dd
 vnoremap + o
 nnoremap + o
-
-nnoremap p "0p<CR>
 "vnoremap = o
 "nnoremap = o
 " Replace line
@@ -81,7 +79,7 @@ noremap rl <S-V>p
 noremap rw cw<C-r>0<Esc>
 " Enter in normal mode by <Esc>o
 inoremap <Esc>o <C-o>
-
+"
 " write change and exit
 nnoremap <S-u> :so ~/.vimrc<CR>
 nnoremap <S-x> :x<CR>
@@ -223,11 +221,9 @@ let g:formatter_yapf_style = 'pep8'
 
 " YouCompleteMe
 " @link https://github.com/ycm-core/YouCompleteMe
-" let g:ycm_autoclose_preview_window_after_completion=1
-" map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
-" Synastic
-" @link https://github.com/vim-syntastic/syntastic
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -282,14 +278,14 @@ au BufNewFile,BufRead *.js, *.html, *.css
     \ set shiftwidth=2
 
 "python with virtualenv support
-"py << EOF
-"import os
-"import sys
-"if 'VIRTUAL_ENV' in os.environ:
-"  project_base_dir = os.environ['VIRTUAL_ENV']
-"  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-"  execfile(activate_this, dict(__file__=activate_this))
-"EOF
+" py << EOF
+" import os
+" import sys
+" if 'VIRTUAL_ENV' in os.environ:
+"   project_base_dir = os.environ['VIRTUAL_ENV']
+"   activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+"   execfile(activate_this, dict(__file__=activate_this))
+" EOF
 
 if has('gui_running')
   set background=dark

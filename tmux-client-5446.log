@@ -1,0 +1,50 @@
+1601263623.827845 client started (5446): version 3.1b, socket /private/tmp/tmux-501/default, protocol 8
+1601263623.828470 on Darwin 19.6.0 Darwin Kernel Version 19.6.0: Thu Jun 18 20:49:00 PDT 2020; root:xnu-6153.141.1~1/RELEASE_X86_64; libevent 2.1.12-stable (select)
+1601263623.828520 socket is /private/tmp/tmux-501/default
+1601263623.828541 trying connect
+1601263623.828626 add peer 0x7fc097d31000: 6 (0x0)
+1601263623.829842 sending message 100 to peer 0x7fc097d31000 (4 bytes)
+1601263623.829863 sending message 101 to peer 0x7fc097d31000 (7 bytes)
+1601263623.829872 sending message 102 to peer 0x7fc097d31000 (13 bytes)
+1601263623.829880 sending message 108 to peer 0x7fc097d31000 (37 bytes)
+1601263623.829899 sending message 104 to peer 0x7fc097d31000 (0 bytes)
+1601263623.829908 sending message 107 to peer 0x7fc097d31000 (4 bytes)
+1601263623.829916 sending message 105 to peer 0x7fc097d31000 (14 bytes)
+1601263623.829923 sending message 105 to peer 0x7fc097d31000 (20 bytes)
+1601263623.829930 sending message 105 to peer 0x7fc097d31000 (22 bytes)
+1601263623.829938 sending message 105 to peer 0x7fc097d31000 (26 bytes)
+1601263623.829945 sending message 105 to peer 0x7fc097d31000 (22 bytes)
+1601263623.829952 sending message 105 to peer 0x7fc097d31000 (61 bytes)
+1601263623.829960 sending message 105 to peer 0x7fc097d31000 (17 bytes)
+1601263623.829967 sending message 105 to peer 0x7fc097d31000 (19 bytes)
+1601263623.829974 sending message 105 to peer 0x7fc097d31000 (27 bytes)
+1601263623.829981 sending message 105 to peer 0x7fc097d31000 (22 bytes)
+1601263623.829989 sending message 105 to peer 0x7fc097d31000 (50 bytes)
+1601263623.829996 sending message 105 to peer 0x7fc097d31000 (41 bytes)
+1601263623.830003 sending message 105 to peer 0x7fc097d31000 (15 bytes)
+1601263623.830010 sending message 105 to peer 0x7fc097d31000 (8 bytes)
+1601263623.830017 sending message 105 to peer 0x7fc097d31000 (66 bytes)
+1601263623.830025 sending message 105 to peer 0x7fc097d31000 (12 bytes)
+1601263623.830032 sending message 105 to peer 0x7fc097d31000 (23 bytes)
+1601263623.830039 sending message 105 to peer 0x7fc097d31000 (28 bytes)
+1601263623.830046 sending message 105 to peer 0x7fc097d31000 (60 bytes)
+1601263623.830054 sending message 105 to peer 0x7fc097d31000 (57 bytes)
+1601263623.830061 sending message 105 to peer 0x7fc097d31000 (42 bytes)
+1601263623.830068 sending message 105 to peer 0x7fc097d31000 (13 bytes)
+1601263623.830075 sending message 105 to peer 0x7fc097d31000 (19 bytes)
+1601263623.830082 sending message 105 to peer 0x7fc097d31000 (14 bytes)
+1601263623.830089 sending message 105 to peer 0x7fc097d31000 (19 bytes)
+1601263623.830097 sending message 105 to peer 0x7fc097d31000 (33 bytes)
+1601263623.830104 sending message 105 to peer 0x7fc097d31000 (34 bytes)
+1601263623.830111 sending message 105 to peer 0x7fc097d31000 (22 bytes)
+1601263623.830118 sending message 106 to peer 0x7fc097d31000 (0 bytes)
+1601263623.830128 sending message 200 to peer 0x7fc097d31000 (4 bytes)
+1601263623.830135 client loop enter
+1601263623.830357 peer 0x7fc097d31000 message 303
+1601263623.830369 open write file 2 -
+1601263623.830394 sending message 305 to peer 0x7fc097d31000 (8 bytes)
+1601263623.830488 peer 0x7fc097d31000 message 304
+1601263623.830499 write 58 to file 2
+1601263623.830513 peer 0x7fc097d31000 message 203
+1601263623.830522 file 2 58 bytes left
+1601263623.830554 client loop exit
