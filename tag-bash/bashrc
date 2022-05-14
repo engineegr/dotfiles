@@ -5,6 +5,7 @@ if [ -f /etc/bashrc ]; then
   . /etc/bashrc
 fi
 
+echo "Run .bash_profile" > bash_rc.log
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 
