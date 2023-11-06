@@ -184,7 +184,8 @@ call vundle#begin('~/.vim/bundle')
   Plugin 'stephpy/vim-yaml'
   Plugin 'vim-scripts/indentpython.vim'
   " Plugin 'Valloric/YouCompleteMe'
-  Plugin 'ajh17/VimCompletesMe'
+  " Plugin 'ajh17/VimCompletesMe'
+  Plugin 'vim-scripts/VimCompletesMe'
   Plugin 'vim-syntastic/syntastic'
   " Plugin 'vim-vdebug/vdebug'
   " Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}

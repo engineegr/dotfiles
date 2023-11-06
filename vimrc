@@ -186,7 +186,7 @@ call vundle#begin('~/.vim/bundle')
   Plugin 'stephpy/vim-yaml'
   Plugin 'vim-scripts/indentpython.vim'
   " Plugin 'Valloric/YouCompleteMe'
-  Plugin 'ajh17/VimCompletesMe'
+  Plugin 'vim-scripts/VimCompletesMe'
   Plugin 'vim-syntastic/syntastic'
   " Plugin 'vim-vdebug/vdebug'
   " Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
@@ -282,14 +282,14 @@ au BufNewFile,BufRead *.js, *.html, *.css
     \ set shiftwidth=2
 
 "python with virtualenv support
-py << EOF
-import os
-import sys
-if 'VIRTUAL_ENV' in os.environ:
-  project_base_dir = os.environ['VIRTUAL_ENV']
-  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-  execfile(activate_this, dict(__file__=activate_this))
-EOF
+" py << EOF
+" import os
+" import sys
+" if 'VIRTUAL_ENV' in os.environ:
+"   project_base_dir = os.environ['VIRTUAL_ENV']
+"   activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+"   execfile(activate_this, dict(__file__=activate_this))
+" EOF
 
 if has('gui_running')
   set background=dark
